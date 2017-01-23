@@ -1,28 +1,131 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load pages_tags mezzanine_tags i18n staticfiles %}
 
-{% block meta_title %}{% trans "Home" %}{% endblock %}
-{% block title %}{% trans "Home" %}{% endblock %}
+{% block meta_title %}{% trans "Tanker" %}{% endblock %}
+{% block meta_description %}{% trans "With Tanker, meet the best of all world to foster the most secure and flexible ... At Tanker we reconcile IT & Security departments with employee's favorite tools..." %}{% endblock %}
 
-{% block breadcrumb_menu %}
-<li class="active">{% trans "Home" %}</li>
+{% block extra_head %}
+    {{ block.super }}
+    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
 {% endblock %}
 
 {% block main %}
-{% blocktrans %}
-<h2>Congratulations!</h2>
-<p>
-    Welcome to your new Mezzanine powered website.
-    Here are some quick links to get you started:
-</p>
-<ul>
-    <li><a href="/admin/">Log in to the admin interface</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/content-architecture.html">Creating custom page types</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html#templates">Modifying HTML templates</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html#why-isn-t-the-homepage-a-page-object-i-can-edit-via-the-admin">Changing this homepage</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html">Other frequently asked questions</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/configuration.html#default-settings">Full list of settings</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/deployment.html">Deploying to a production server</a></li>
-</ul>
-{% endblocktrans %}
+<div id="home">
+    <div id="home-header">
+        <img src="{% static "img/header.png" %}" class="cover" alt="Header"/>
+        <div class="header-content">
+            <h1>
+                Embrace the clouds you love
+            </h1>
+            <h3>
+                Encrypt private data
+                in the public cloud. 
+                Effortlessy. 
+            </h3>
+            <div class="button-container">
+                <a class="button" href="#" id="learn-more">
+                    Learn more
+                    <img src="{% static "img/arrow.svg" %}" alt="arrow"/>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="what">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 left">
+                    <h2>ENCRYPTION BY DESIGN</h2>
+                    <p>
+                        Tanker allows businesses to finally embrace the world’s
+                        best cloud services, like Dropbox or Microsoft OneDrive.
+                        This groundbreaking end-to-end data encryption tool is absolutely training-free, invisible to the user & ANSSI-certified. 
+                    </p>
+                    <p>
+                        There is no longer a need to compromise.
+                    </p>
+                    <div class="button-container">
+                        <a class="button" href="#">How does it work?</a>
+                        <a class="button white" href="#">Let's talk about <strong>encryption</strong></a>
+                    </div>
+                </div>
+                <div class="col-md-6 right">
+                    <img src="{% static "img/engineered-for.png" %}" alt="Engineered for"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="user-first">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 left">
+                    <img src="{% static "img/user-first.png" %}" alt="Comparison with Tanker"/>
+                </div>
+                <div class="col-md-5 right">
+                    <h2>Our Priority : <strong>THE USER</strong></h2>
+                    <p>
+                        Using public cloud services is a no-brainer nowadays;
+                        it provides users with the flexibility they need to be more productive at work and at home.  Tanker makes sure that nobody can access your cloud stored private data which means you can keep on using your favorite clouds at work with no worries. Simply install Tanker and keep collaborating and exchanging files with internal and external collaborators the way you
+                        did before.
+                    </p>
+                    <p>
+                        We are training-free and virtually invisible.
+                    </p>
+                    <div class="button-container">
+                        <a class="button" href="#">
+                            Install Tanker 
+                        </a>
+                        <a class="button white" href="#">
+                            Implement Tanker 
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="background-bottom"></div>
+    </div>
+
+    <div id="security">
+        <div class="container" id="security-intro">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        CUTTING-EDGE SECURITY
+                    </h2>
+                    <p>
+                        Tanker is a full end-to-end endpoint encryption software. Each user has a private key, securely stored on his personal device, laptop or mobile. Each file travels with a public key, and can only be deciphered with the target user’s private key. 
+                    </p>
+                    <p>
+                        A sophisticated solution made to look simple.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="button-container">
+                        <a class="button" href="#">
+                            How do I implement it?
+                        </a>
+                        <a class="button black" href="#">
+                            Give me more security
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="{% static "img/schema.png" %}" class="security-schema" alt="Tanker schema"/>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer_js %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#learn-more').click(function(e) {
+            e.preventDefault();
+            $(window).scrollTo('#what', 800);
+        });
+    </script>
 {% endblock %}

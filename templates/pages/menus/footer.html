@@ -1,45 +1,47 @@
-{% load i18n pages_tags %}
+{% load pages_tags mezzanine_tags i18n staticfiles %}
 
 {% spaceless %}
-{% if page_branch_in_menu %}
-
-{% for page in page_branch %}
-    {% if page.is_primary %}
-        {% if forloop.first %}
-            <div class="nav-footer">
-        {% endif %}
-        {% if page.in_menu %}
-            <ul class="list-unstyled">
-        {% endif %}
-    {% endif %}
-
-    {% if page.in_menu %}
-        {% if forloop.first and not page.parent.in_menu and not page.is_primary %}
-            <ul class="list-unstyled">
-        {% endif %}
-        <li {% if page.is_current_or_ascendant %}class="active"{% endif %}
-            id="footer-menu-{{ page.html_id }}">
-            <a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
-    {% endif %}
-
-    {% if page.in_menu and page.has_children_in_menu %}{% page_menu page %}{% endif %}
-
-    {% if page.in_menu %}
-        {% if forloop.first and not page.parent.in_menu and not page.is_primary %}
-            </li></ul>
-        {% endif %}
-    {% endif %}
-
-    {% if page.is_primary %}
-        {% if page.in_menu %}
-            </ul>
-        {% endif %}
-        {% if forloop.last %}
-            </div>
-        {% endif %}
-    {% endif %}
-
-{% endfor %}
-
-{% endif %}
+<div id="footer" class="container">
+    <!-- <div class="row" id="footer__partners">
+        <div class="col-md-6 left">
+            <h3>Certified by</h3>
+            <img src="{% static "img/anssi.png" %}" alt="ANSSI"/>
+        </div>
+        <div class="col-md-6 right">
+            <h3>In partnership with</h3>
+            <img src="{% static "img/ens.png" %}" alt="ENS"/>
+        </div>
+    </div> -->
+    <hr/>
+    <div class="row footer__menu">
+        <ul>
+            <li>© Tanker 2016</li>
+            <!-- <li><a href="#">User-first</a></li>
+            <li><a href="#">Easy to manage</a></li>
+            <li><a href="#">Cloud security</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Jobs</a></li> -->
+            <li>
+                <a href="/demo/" class="button">
+                    Request demo
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- <hr/>
+    <div class="row footer__menu">
+        <ul>
+            <li><a href="#">Documentation API</a></li>
+            <li><a href="#">Documentation security</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+            <li>
+                <a href="#" class="footer__button">
+                    <img src="{% static "img/language.svg" %}" alt="Language"/>
+                    <p>English</p>
+                </a>
+            </li>
+        </ul>
+    </div> -->
+</div>
 {% endspaceless %}
